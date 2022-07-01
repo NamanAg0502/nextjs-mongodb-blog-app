@@ -14,6 +14,14 @@ const PostSchema = new mongoose.Schema({
     required: [true, 'Please enter a author'],
     default: 'Anonymous',
   },
+  description: {
+    type: String,
+    required: [true, 'Please enter a description'],
+  },
+  url: {
+    type: String,
+    required: [true, 'Please enter a URL'],
+  },
 });
 
 export default mongoose.models.Post || mongoose.model('Post', PostSchema);

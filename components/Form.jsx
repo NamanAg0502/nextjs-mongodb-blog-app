@@ -13,6 +13,8 @@ const Form = ({ formId, forNewPost = true, postForm }) => {
     title: postForm.title,
     author: postForm.author,
     content: postForm.content,
+    description: postForm.description,
+    url: postForm.url,
   });
 
   //   PUT method to edit existing post
@@ -86,6 +88,8 @@ const Form = ({ formId, forNewPost = true, postForm }) => {
     if (!form.title) err.name = 'Title is required';
     if (!form.author) err.author = 'Author is required';
     if (!form.content) err.content = 'Content is required';
+    if (!form.description) err.description = 'Descripiton is required';
+    if (!form.url) err.url = 'Url is required';
     return err;
   };
 
@@ -101,7 +105,7 @@ const Form = ({ formId, forNewPost = true, postForm }) => {
           <input
             type="text"
             name="title"
-            className="border w-full px-3 py-1 rounded-md "
+            className="border w-full px-3 py-1 rounded-md mt-1 outline-none border-neutral-300 dark:border-neutral-600"
             value={form.title}
             onChange={handleChange}
           />
@@ -111,8 +115,28 @@ const Form = ({ formId, forNewPost = true, postForm }) => {
           <input
             type="text"
             name="author"
-            className="border w-full px-3 py-1 rounded-md "
+            className="border w-full px-3 py-1 rounded-md mt-1 outline-none border-neutral-300 dark:border-neutral-600"
             value={form.author}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex flex-col items-start lg:w-1/3 md:w-1/2 sm:w-2/3 w-11/12 mx-auto">
+          <label htmlFor="url">Image Url</label>
+          <input
+            type="text"
+            name="url"
+            className="border w-full px-3 py-1 rounded-md mt-1 outline-none border-neutral-300 dark:border-neutral-600"
+            value={form.url}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex flex-col items-start lg:w-1/3 md:w-1/2 sm:w-2/3 w-11/12 mx-auto">
+          <label htmlFor="description">Description</label>
+          <input
+            type="text"
+            name="description"
+            className="border w-full px-3 py-1 rounded-md mt-1 outline-none border-neutral-300 dark:border-neutral-600"
+            value={form.description}
             onChange={handleChange}
           />
         </div>
@@ -121,7 +145,8 @@ const Form = ({ formId, forNewPost = true, postForm }) => {
           <textarea
             type="text"
             name="content"
-            className="border w-full px-3 py-1 rounded-md "
+            rows={6}
+            className="border w-full px-3 py-1 rounded-md mt-1 outline-none border-neutral-300 dark:border-neutral-600"
             value={form.content}
             onChange={handleChange}
           />
@@ -129,13 +154,14 @@ const Form = ({ formId, forNewPost = true, postForm }) => {
         <button
           type="submit"
           onClick={handleSubmit}
-          className="border px-4 py-1 rounded"
+          className="border px-4 py-1 rounded dark:border-neutral-600 border-neutral-400 hover:dark:bg-neutral-700 duration-75 hover:bg-neutral-100"
         >
           Submit
         </button>
       </form>
       <p>{message}</p>
       <div>
+        {console.log(Object.keys(errors))}
         {Object.keys(errors).map((err, index) => (
           <li key={index}>{err}</li>
         ))}

@@ -5,6 +5,8 @@ const New = () => {
     title: '',
     content: '',
     author: '',
+    url: '',
+    description: '',
   };
 
   return <Form postForm={postForm} />;
