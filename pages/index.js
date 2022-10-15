@@ -1,10 +1,14 @@
+import Footer from '../components/Footer';
 import Posts from '../components/Posts';
 import dbConnect from '../lib/dbConnect';
 import Post from '../models/Post';
 
 const Home = ({ posts }) => (
-  <div>
+  <div className="relative h-screen">
     <Posts posts={posts} />
+    <div className="absolute bottom-0 w-full">
+      <Footer />
+    </div>
   </div>
 );
 
