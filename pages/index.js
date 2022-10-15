@@ -6,7 +6,7 @@ import Post from '../models/Post';
 const Home = ({ posts }) => (
   <div className="relative h-screen">
     <Posts posts={posts} />
-    <div className="absolute bottom-0 w-full">
+    <div className="absolute bottom-0 w-full mt-5">
       <Footer />
     </div>
   </div>
